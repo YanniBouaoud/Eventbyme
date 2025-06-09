@@ -1,0 +1,39 @@
+{
+  "common": {
+    "add": "select",
+    "welcome": "Benvenuto at Mario's Pizza, click here to see our delizioso pizza selections! ",
+    "connect": "Connexion",
+    "registervalide": "Register",
+    "loginError": "Connexion error",
+    "loginPlaceholder": "PHONE",
+    "passwordPlaceholder": "PASSWORD",
+    "firstnamePlaceholder": "FIRST NAME",
+    "lastnamePlaceholder": "NAME",
+    "addressPlaceholder": "ADRESS",
+    "register": "create an account",
+    "detailsPanier": "Cart details",
+    "validerDevis": "Send quote",
+    "prixTotal": "Total price",
+    "choose": "Our selection of vehicles",
+    "importExport": "Import-Export",
+    "vehiculeEnVente": "Vehicle for sale",
+    "appartementDisponible": "Apartment rental",
+    "activiteBatiment": "Building Quote",
+    "histoireSociete": "Who are we ?",
+    "contacts": "Contact"
+
+
+  },
+ 
+  
+  "error": {
+    "minLen": "at least {{field}} characters",
+    "required": "{{field}} is required",
+    "minValue": "must be greater or equals to {{value}}",
+    "maxValue": "must be lower or equals to {{value}}",
+    "atLeast_one": "at least {{count}} item",
+    "noMoreThan_one": "no more than {{count}} item",
+    "atLeast_other": "at least {{count}} items",
+    "noMoreThan_other": "no more than {{count}} items"
+  }
+}

@@ -1,0 +1,6 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffbdc8; /* couleur de fond complète */
+}

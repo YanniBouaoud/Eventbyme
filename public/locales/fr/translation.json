@@ -1,0 +1,45 @@
+{
+  "common": {
+    "add": "selectionner",
+    "welcome": "Benvenuto chez Mario's Pizza, cliquez ici pour voir nos séléctions de pizza delizioso ! ",
+    "connect": "Connexion",
+    "registervalide": "S'inscrire",
+    "loginError": "erreur de connexion",
+    "loginPlaceholder": "TELEPHONE",
+    "passwordPlaceholder": "MOT DE PASSE",
+    "firstnamePlaceholder": "PRENOM",
+    "lastnamePlaceholder": "NOM",
+    "addressPlaceholder": "ADRESSE",
+    "register": "créer un compte",
+    "detailsPanier": "Détails du panier",
+    "validerDevis": "Envoyer le devis",
+    "prixTotal": "Prix total",
+    "choose": "Notre sélection de véhicules",
+    "importExport": "Import-Export",
+    "vehiculeEnVente": "Véhicule en vente",
+    "appartementDisponible": "Location d'appartement",
+    "activiteBatiment": "Devis Batiment",
+    "histoireSociete": "Qui sommes-nous ?",
+    "contacts": "Contact"
+
+
+
+
+
+    
+
+    
+    
+  },
+
+  "error": {
+    "minLen": "au moins {{field}} caractères",
+    "required": "{{field}} est obligatoire",
+    "minValue": "doit être supérieur ou égal à {{value}}",
+    "maxValue": "doit être inférieur ou égal à {{value}}",
+    "atLeast_one": "au moins {{count}} élément",
+    "noMoreThan_one": "pas plus de {{count}} élément",
+    "atLeast_other": "au moins {{count}} éléments",
+    "noMoreThan_other": "pas plus de {{count}} éléments"
+  }
+}

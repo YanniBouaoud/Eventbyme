@@ -1,0 +1,190 @@
+/* EventByMe - Style haut de gamme noir, blanc & doré-beige */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+  background-color: #fffdf8;
+  color: #222;
+}
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffbdc8;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.main-logo {
+  height: 80px;
+  margin-left: 2em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-item {
+  color: #f00b0d;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-item:hover {
+  color: #c7a977;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-bar {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #c7a977;
+  padding: 4px 8px;
+  width: 200px;
+}
+
+.cart-button {
+  background-color: #c7a977;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: background 0.3s ease;
+}
+
+.cart-button:hover {
+  background-color: #aa895d;
+}
+
+.hero-slider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-family: "Great Vibes", cursive;
+  color: #c7a977;
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  margin: 40px auto 20px;
+  color: #c7a977;
+}
+
+.featured-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1400px;
+}
+
+.featured-item {
+  width: 320px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.featured-item:hover {
+  transform: translateY(-6px);
+}
+
+.featured-image {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+
+.product-name {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #222;
+}
+
+.product-price {
+  color: #c7a977;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.overlay-unavailable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+}
+
+.MuiBadge-badge {
+  background-color: #ff1744;
+}

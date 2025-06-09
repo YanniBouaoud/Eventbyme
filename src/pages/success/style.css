@@ -1,0 +1,50 @@
+.success-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #fdf6e3; /* 🌟 Beige clair pour une ambiance douce */
+  color: #5a4a42; /* Texte brun foncé */
+  padding: 20px;
+}
+
+.success-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  font-size: 1.2rem;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.success-message a {
+  color: #8b5e3c; /* Marron pour rester dans le thème */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.success-message a:hover {
+  text-decoration: underline;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #8b5e3c !important;
+  color: white !important;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #6a3f2b !important;
+}

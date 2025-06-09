@@ -1,0 +1,97 @@
+.payment-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f0e1;
+  padding: 20px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 350px;
+}
+
+.logo-container img {
+  width: 200px; /* Ajuste la taille du logo */
+  height: auto;
+}
+
+.cart-items {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e8dcc7;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.cart-item:hover {
+  background: #d4c1a5;
+}
+
+.cart-item h6 {
+  color: #5a4a42;
+  font-size: 1.2rem;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-button:hover svg {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.empty-cart {
+  font-size: 1.2rem;
+  color: #7d6a5e;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pay-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8b5e3c !important;
+  color: white !important;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #74492e !important;
+}
+
+.back-button {
+  margin-top: 15px;
+  color: #5a4a42 !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
