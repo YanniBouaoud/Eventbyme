@@ -31,36 +31,22 @@ const Welcome: React.FC<{
 
   return (
     <Box className="homepage">
-      <Box className="header">
+      <Box
+        className="header"
+        sx={{
+          backgroundColor: "#f5f5dc",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "10px 0",
+          borderBottom: "6px solid #eae4d9",
+        }}
+      >
         <img
           src="/logoEventbyme.png"
           alt="EventByMe logo"
-          className="main-logo"
+          className="header-logo"
         />
-        <Box className="nav-links">
-          <NavLink to="/about" className="nav-item">
-            About me
-          </NavLink>
-          <NavLink to="/event" className="nav-item">
-            Decor photo
-          </NavLink>
-        </Box>
-        <Box className="nav-actions">
-          <IconButton onClick={() => setShowSearch(!showSearch)}>
-            <SearchIcon sx={{ color: "#c7a977" }} />
-          </IconButton>
-          {showSearch && (
-            <TextField
-              className="search-bar"
-              placeholder="Rechercher un décor..."
-              variant="outlined"
-              size="small"
-              autoFocus
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          )}
-        </Box>
       </Box>
 
       <Box className="hero-slider" style={{ position: "relative" }}>
@@ -69,57 +55,52 @@ const Welcome: React.FC<{
           alt="Décor baby shower"
           className="hero-image"
         />
-        <Box className="qr-wrapper">
+        <Box className="social-icons-banner">
           <a
-            href="https://www.tiktok.com/@lia974ce"
+            href="https://www.instagram.com/tonprofil"
             target="_blank"
             rel="noopener noreferrer"
-            className="qr-wrapper"
+            className="social-icon-link"
           >
-            <div className="qr-hover-container">
-              <img
-                src="/qrcodeliace.png"
-                alt="QR Code TikTok"
-                className="qr-code"
-              />
-              <img
-                src="/logotoktok.png"
-                alt="TikTok Logo"
-                className="qr-overlay"
-              />
-            </div>
+            <img src="/1.png" alt="Instagram" className="social-icon" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@tonprofil"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon-link"
+          >
+            <img src="/2.png" alt="TikTok" className="social-icon" />
+          </a>
+          <a href="mailto:contact@eventbyme.fr" className="social-icon-link">
+            <img src="/3.png" alt="Email" className="social-icon" />
           </a>
         </Box>
-      </Box>
-
-      <Box className="hero-slider" style={{ position: "relative" }}>
-        <img
-          src="/banderole2.png"
-          alt="Décor baby shower"
-          className="hero-image"
-        />
 
         <Box className="decor-overlay-container">
-          {[1, 2].map((_, i) => (
-            <Box
-              key={i}
-              className="decor-image-wrapper"
-              onClick={() => navigate("/panier")}
-            >
-              <img
-                src="/decor1.jpg"
-                alt={`Décor ${i + 1}`}
-                className="decor-image"
-              />
-              <img
-                src="/logoEventbyme.png"
-                alt="Overlay Logo"
-                className="decor-logo-overlay"
-              />
-            </Box>
-          ))}
+          <Box
+            className="decor-image-wrapper"
+            onClick={() => navigate("/panier")}
+          >
+            <img src="/decor2.png" alt="Décor photo" className="decor-image" />
+            <img
+              src="/logoEventbyme.png"
+              alt="Overlay Logo"
+              className="decor-logo-overlay"
+            />
+          </Box>
         </Box>
       </Box>
+
+      {/* 
+<Box className="hero-slider" style={{ position: "relative" }}>
+  <img
+    src="/banderole2.png"
+    alt="Décor baby shower"
+    className="hero-image"
+  />
+</Box>
+*/}
 
       <Snackbar
         open={showAlert}
