@@ -7,6 +7,8 @@ import PaymentPage from "./pages/PaymentPage";
 import { Product } from "./types";
 import Success from "./pages/success";
 import Panier from "./pages/Panier";
+import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
 
 const App = () => {
   const [cart, setCart] = useState<{ [key: string]: Product }>({});
@@ -29,6 +31,8 @@ const App = () => {
             path="/panier"
             element={<Panier cart={cart} setCart={setCart} />}
           />
+          <Route path="/a-propos" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
 
