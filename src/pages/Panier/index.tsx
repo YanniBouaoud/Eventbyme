@@ -1,178 +1,142 @@
-// EventByMe - Page principale avec style harmonisé noir/blanc/doré
-import React, { useState } from "react";
+// EventByMe - Panier + Paiement Stripe
+import React, { useMemo } from "react";
 import {
   Box,
   Typography,
   Button,
-  TextField,
   IconButton,
   Snackbar,
-  Badge,
+  Divider,
 } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import SearchIcon from "@mui/icons-material/Search";
+import PaymentIcon from "@mui/icons-material/Payment";
 import { Product } from "../../types";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 import "./style.css";
+
+const stripePromise = loadStripe(
+  "pk_live_51Qqw9CHD55FYDeNbST86tQdHgm9PFBeHHSe9ODtehAm1J7UqdHeLiNAvViNwuvbwT6nydjVOQ3NxInv5sET4NUCZ009Whel6Rb"
+);
 
 const Panier: React.FC<{
   cart: { [key: string]: Product };
   setCart: React.Dispatch<React.SetStateAction<{ [key: string]: Product }>>;
 }> = ({ cart, setCart }) => {
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [alertMessage, setAlertMessage] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-  const navigate = useNavigate();
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState("");
 
-  const products: Product[] = [
-    {
-      name: "Décor Bohème Chic",
-      image: "/decor1.jpg",
-      stripePriceId: "price_1QxxBOME",
-      available: true,
-      price: 149,
-    },
-    {
-      name: "Baby Shower Pastel",
-      image: "/decor1.jpg",
-      stripePriceId: "price_1QxxBABY",
-      available: true,
-      price: 179,
-    },
-  ];
+  const items = Object.values(cart);
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
+  // 🔍 log debug pour vérifier que stripePriceId est bien présent
+  console.log("Panier actuel:", cart);
+
+  const total = useMemo(
+    () => items.reduce((acc, p) => acc + (p.price ?? 0), 0),
+    [items]
   );
 
-  const cartCount = Object.keys(cart).length;
-
-  const toggleCart = (product: Product) => {
-    setCart((prevCart) => {
-      const updatedCart = { ...prevCart };
-      if (updatedCart[product.name]) {
-        delete updatedCart[product.name];
-        setAlertMessage(`❌ Retiré du panier: ${product.name}`);
-      } else {
-        updatedCart[product.name] = product;
-        setAlertMessage(`✅ Ajouté au panier: ${product.name}`);
+  const removeFromCart = (id: string) => {
+    setCart((prev) => {
+      const newCart = { ...prev };
+      const removed = newCart[id];
+      delete newCart[id];
+      if (removed) {
+        setAlertMessage(`❌ Retiré du panier: ${removed.title}`);
+        setShowAlert(true);
       }
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      setShowAlert(true);
-      return updatedCart;
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      return newCart;
     });
   };
 
+  const handleStripePayment = async () => {
+    const stripe = await stripePromise;
+    if (!stripe) return;
+
+    const purchasable = items.filter((i) => !!i.stripePriceId);
+
+    if (purchasable.length === 0) {
+      alert("Aucun produit payable (stripePriceId manquant).");
+      return;
+    }
+
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: purchasable.map((item) => ({
+        price: item.stripePriceId as string,
+        quantity: 1,
+      })),
+      mode: "payment",
+      successUrl: window.location.origin + "/success",
+      cancelUrl: window.location.origin + "/panier",
+    });
+
+    if (error) console.error("Erreur Stripe:", error.message);
+  };
+
   return (
-    <Box className="homepage">
-      <Box className="header">
-        <img
-          src="/logoEventbyme.png"
-          alt="EventByMe logo"
-          className="main-logo"
-        />
-        <Box className="nav-links">
-          <NavLink to="/" className="nav-item">
-            EventByMe
-          </NavLink>
-          <NavLink to="/about" className="nav-item">
-            About me
-          </NavLink>
-          <NavLink to="/event" className="nav-item">
-            Event
-          </NavLink>
-          <NavLink to="/children" className="nav-item">
-            Children's corner
-          </NavLink>
-        </Box>
-        <Box className="nav-actions">
-          <IconButton onClick={() => setShowSearch(!showSearch)}>
-            <SearchIcon sx={{ color: "#c7a977" }} />
-          </IconButton>
-          {showSearch && (
-            <TextField
-              className="search-bar"
-              placeholder="Rechercher un décor..."
-              variant="outlined"
-              size="small"
-              autoFocus
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          )}
-          <Button className="cart-button" component={NavLink} to="/paymentpage">
-            <Badge
-              badgeContent={cartCount}
-              color="error"
-              invisible={cartCount === 0}
-            >
-              <ShoppingCartIcon />
-            </Badge>
+    <Box className="panier-page">
+      <Box className="panier-header">
+        <Typography variant="h4" fontWeight={900}>
+          Votre panier
+        </Typography>
+        <NavLink to="/" className="back-link">
+          ⬅ Retour à l’accueil
+        </NavLink>
+      </Box>
+
+      {items.length === 0 ? (
+        <Box className="empty-cart">
+          <Typography variant="h6">Votre panier est vide 😢</Typography>
+          <Button variant="contained" component={NavLink} to="/produits">
+            Découvrir nos prestations
           </Button>
         </Box>
-      </Box>
-
-      <Box className="hero-slider">
-        <img
-          src="/banderole.png"
-          alt="Décor baby shower"
-          className="hero-image"
-        />
-      </Box>
-
-      <Box className="featured-section">
-        {filteredProducts.map((product, index) => (
-          <Box key={index} className="featured-item">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="featured-image"
-              style={{ filter: product.available ? "none" : "grayscale(80%)" }}
-            />
-            <Typography className="product-name">{product.name}</Typography>
-            <Typography className="product-price">{product.price}€</Typography>
-            <Box className="button-group">
-              <Button
-                variant="outlined"
-                onClick={() => toggleCart(product)}
-                disabled={!product.available}
-              >
-                {cart[product.name] ? (
-                  <RemoveShoppingCartIcon />
-                ) : (
-                  <AddShoppingCartIcon />
-                )}
-              </Button>
-              {cart[product.name] && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => navigate("/paymentpage")}
-                >
-                  Voir le panier
-                </Button>
-              )}
+      ) : (
+        <Box className="cart-content">
+          {items.map((item) => (
+            <Box key={item.id} className="cart-item">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="cart-item-img"
+              />
+              <Box className="cart-item-info">
+                <Typography variant="h6">{item.title}</Typography>
+                <Typography className="cart-item-price">
+                  {item.price}€
+                </Typography>
+              </Box>
+              <IconButton color="error" onClick={() => removeFromCart(item.id)}>
+                <RemoveShoppingCartIcon />
+              </IconButton>
             </Box>
+          ))}
+
+          <Divider className="cart-divider" />
+
+          <Box className="cart-summary">
+            <Typography variant="h6" fontWeight={700}>
+              Total : {total}€
+            </Typography>
+            <Button
+              variant="contained"
+              startIcon={<PaymentIcon />}
+              onClick={handleStripePayment}
+              className="checkout-btn"
+            >
+              Payer avec Stripe
+            </Button>
           </Box>
-        ))}
-      </Box>
+        </Box>
+      )}
 
       <Snackbar
         open={showAlert}
-        autoHideDuration={3000}
+        autoHideDuration={2500}
         onClose={() => setShowAlert(false)}
         message={alertMessage}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        sx={{
-          "& .MuiSnackbarContent-root": {
-            backgroundColor: "#c7a977",
-            color: "white",
-            fontWeight: "bold",
-          },
-        }}
       />
     </Box>
   );

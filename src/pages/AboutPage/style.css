@@ -1,0 +1,99 @@
+/* --- AboutPage global --- */
+.about-container {
+  background-color: #fafaf7; /* OFFWHITE */
+  color: #0e0e0e; /* INK */
+  min-height: 100vh;
+  padding: 3rem 0;
+}
+
+/* --- Header --- */
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.about-header .logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem auto;
+}
+.about-header h3 {
+  font-weight: 900;
+}
+.about-header p {
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Story blocks --- */
+.story-block {
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e6d4ad; /* GOLD_LIGHT */
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+}
+.story-block h5 {
+  color: #c8a96a; /* GOLD */
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Divider --- */
+.about-divider {
+  border-color: #e6d4ad;
+  margin-bottom: 3rem;
+}
+
+/* --- Map section --- */
+.map-section {
+  text-align: center;
+}
+.map-section h4 {
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+.map-section p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.map-container img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+}
+/* --- Carte interactive --- */
+.map-container img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 0; /* si tu veux garder les vrais contours */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+}
+
+.map-container img:hover {
+  transform: scale(1.05) rotate3d(1, 1, 0, 5deg);
+  cursor: pointer;
+}
+.back-button {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e6d4ad; /* GOLD_LIGHT */
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background: #c8a96a; /* GOLD */
+  transform: scale(1.1);
+  color: #0e0e0e; /* INK */
+}

@@ -1,7 +1,9 @@
 export interface Product {
-  name: string;
+  id: string;
+  title: string;
   image: string;
-  stripePriceId: string;
-  available?: boolean;
-  price: number; // ✅ Ajout de la propriété price
+  price: number;
+  description?: string;
+  available?: boolean; // ✅ ajouté
+  stripePriceId?: string;
 }
