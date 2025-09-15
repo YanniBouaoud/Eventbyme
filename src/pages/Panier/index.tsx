@@ -28,7 +28,7 @@ const Panier: React.FC<{
 
   const items = Object.values(cart);
 
-  // 🔍 log debug pour vérifier que stripePriceId est bien présent
+  // log debug pour vérifier que stripePriceId est bien présent
   console.log("Panier actuel:", cart);
 
   const total = useMemo(

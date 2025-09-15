@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import "./style.css";
 
 const AboutPage: React.FC = () => {
-  const navigate = useNavigate(); // ✅ indispensable
+  const navigate = useNavigate();
 
   return (
     <Box className="about-container">
@@ -21,7 +21,7 @@ const AboutPage: React.FC = () => {
 
       <IconButton
         className="back-button"
-        onClick={() => navigate("/")} // ✅ fonctionne
+        onClick={() => navigate("/")}
         aria-label="Retour à l'accueil"
       >
         <ArrowBackIcon />

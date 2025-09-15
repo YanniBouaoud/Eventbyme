@@ -19,10 +19,10 @@ const App = () => {
 
       <main>
         <Routes>
-          {/* ✅ Passage des props à Welcome */}
+          {/*  Passage des props à Welcome */}
           <Route path="/" element={<Welcome cart={cart} setCart={setCart} />} />
           <Route path="/success" element={<Success />} />{" "}
-          {/* ✅ Route correcte */}
+          {/*  Route correcte */}
           <Route
             path="/PaymentPage"
             element={<PaymentPage cart={cart} setCart={setCart} />}
