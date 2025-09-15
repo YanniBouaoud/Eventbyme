@@ -653,7 +653,7 @@ const Welcome: React.FC<{
                   href="mailto:contact@eventbyme.fr"
                   sx={{
                     border: `1px solid ${GOLD_LIGHT}`,
-                    color: GOLD_LIGHT, // ✅ donne la couleur aux icônes (currentColor)
+                    color: GOLD_LIGHT,
                     "&:hover": { backgroundColor: "rgba(200,169,106,0.08)" },
                   }}
                 >
@@ -668,7 +668,7 @@ const Welcome: React.FC<{
                     aria-label="Instagram"
                     sx={{
                       border: `1px solid ${GOLD_LIGHT}`,
-                      color: GOLD_LIGHT, // ✅ donne la couleur aux icônes (currentColor)
+                      color: GOLD_LIGHT,
                       "&:hover": { backgroundColor: "rgba(200,169,106,0.08)" },
                     }}
                   >
